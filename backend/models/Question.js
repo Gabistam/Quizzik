@@ -1,18 +1,29 @@
 const mongoose = require('mongoose');
 
 const questionSchema = new mongoose.Schema({
-  question: {
-    type: String,
-    required: true
-  },
-  options: {
-    type: [String],
-    required: true
-  },
-  correctAnswer: {
-    type: String,
-    required: true
+  id: Number,
+  question: String,
+  options: [String],
+  correctAnswer: String,
+  explanation: String
+});
+
+const feedbackSchema = new mongoose.Schema({
+  comment: String,
+  image: String
+});
+
+const quizSchema = new mongoose.Schema({
+  quizTitle: String,
+  questions: [questionSchema],
+  feedback: {
+    perfect: feedbackSchema,
+    excellent: feedbackSchema,
+    veryGood: feedbackSchema,
+    good: feedbackSchema,
+    average: feedbackSchema,
+    poor: feedbackSchema
   }
 });
 
-module.exports = mongoose.model('Question', questionSchema);
+module.exports = mongoose.model('Quiz', quizSchema);

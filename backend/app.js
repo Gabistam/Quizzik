@@ -20,7 +20,7 @@ const PORT = process.env.PORT || 5000;
 let server;
 
 function startServer() {
-  server = app.listen(PORT, () => console.log(`🚀🚀 Lancement avec succès du serveur sur le port ${PORT}`));
+  server = app.listen(PORT, () => console.log(`🚀🚀 Serveur lancé avec succès sur le port ${PORT}`));
 }
 
 function closeServer() {
