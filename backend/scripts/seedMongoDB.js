@@ -1,6 +1,9 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
-const Quiz = require('../models/Quiz');
+const Quiz = require('../models/Question');
+
+const MONGODB_URI = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_CLUSTER}.mongodb.net/${process.env.DB_DATABASE}?retryWrites=true&w=majority`;
+
 
 const michaelJacksonQuiz = {
   quizTitle: "Quiz sur Michael Jackson",
@@ -105,29 +108,25 @@ const michaelJacksonQuiz = {
 };
 
 const seedMongoDB = async () => {
-  try {
-    await mongoose.connect(process.env.MONGODB_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-
-    console.log('Connecté à MongoDB Atlas');
-
-    // Supprime tous les quiz existants dans la collection
-    await Quiz.deleteMany({});
-    console.log('Quiz existants supprimés');
-
-    // Insère le nouveau quiz
-    const newQuiz = new Quiz(michaelJacksonQuiz);
-    await newQuiz.save();
-    console.log('Nouveau quiz inséré avec succès');
-
-  } catch (error) {
-    console.error(`Erreur lors de l'insertion des données:`, error);
-  } finally {
-    await mongoose.disconnect();
-    console.log('Déconnecté de MongoDB Atlas');
-  }
-};
-
-seedMongoDB();
+    try {
+      await mongoose.connect(MONGODB_URI);
+      console.log('Connecté à MongoDB Atlas');
+  
+      // Supprime tous les quiz existants dans la collection
+      await Quiz.deleteMany({});
+      console.log('Quiz existants supprimés');
+  
+      // Insère le nouveau quiz
+      const newQuiz = new Quiz(michaelJacksonQuiz);
+      await newQuiz.save();
+      console.log('Nouveau quiz inséré avec succès');
+  
+    } catch (error) {
+      console.error(`Erreur lors de la connexion ou de l'insertion des données:`, error);
+    } finally {
+      await mongoose.disconnect();
+      console.log('Déconnecté de MongoDB Atlas');
+    }
+  };
+  
+  seedMongoDB();
