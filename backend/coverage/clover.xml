@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1724322004553" clover="3.2.0">
-  <project timestamp="1724322004554" name="All files">
+<coverage generated="1724322264759" clover="3.2.0">
+  <project timestamp="1724322264759" name="All files">
     <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0" elements="5" coveredelements="5" complexity="0" loc="5" ncloc="5" packages="1" files="1" classes="1"/>
     <file name="Question.js" path="C:\Users\thavi\Desktop\Formateur technique\Formateur Web\Cours\PRF-IDF-CDA2\TP\Quizzik\backend\models\Question.js">
       <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
