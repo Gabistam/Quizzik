@@ -1,4 +1,4 @@
-import { fetchQuiz, createQuiz } from './api';
+import { fetchQuiz } from './api';
 
 // Mock de fetch
 global.fetch = jest.fn();
